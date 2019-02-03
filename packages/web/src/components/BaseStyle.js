@@ -16,6 +16,7 @@ const GlobalStyle = createGlobalStyle`
   #___gatsby > div {
     height: 100%;
     width: 100%;
+    background: #FAF9F7;
   }
   html {
     font-size: 50%; /* 1rem = 8px */

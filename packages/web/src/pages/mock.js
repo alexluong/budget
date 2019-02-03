@@ -1,7 +1,7 @@
 import React from "react"
 import axios from "axios"
 // UIs
-import { TextField, Button, Select } from "ui"
+import { TextField, Button } from "ui"
 import Layout from "components/Layout"
 import Nav from "components/Nav"
 import remoteReminders from "../../../server/src/modules/transaction/reminders"
@@ -73,7 +73,7 @@ function MockPage() {
 
         <label>
           Type: <br />
-          <Select
+          {/* <Select
             id="category"
             options={[
               { value: "CLOTHING", label: "CLOTHING" },
@@ -82,7 +82,8 @@ function MockPage() {
                 label: "EATING PLACES, RESTAURANTS",
               },
             ]}
-          />
+          /> */}
+          <TextField id="category" />
         </label>
       </div>
 

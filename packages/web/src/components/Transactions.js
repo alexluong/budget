@@ -4,11 +4,12 @@ import Money from "components/Money"
 import Table from "components/Table"
 
 function Transactions({ transactions: remoteTransactions }) {
-  const localTransactions = JSON.parse(localStorage.getItem("transactions"))
+  const localTransactions =
+    JSON.parse(localStorage.getItem("transactions")) || []
   const transactions = [...localTransactions, ...remoteTransactions]
 
   return (
-    <Table>
+    <Table left>
       <thead>
         <tr>
           <th>Amount</th>

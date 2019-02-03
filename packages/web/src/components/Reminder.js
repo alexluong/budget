@@ -2,18 +2,20 @@ import React from "react"
 import PropTypes from "prop-types"
 
 function Reminder({ reminder, transactions }) {
-  const usage = transactions.reduce((u, transaction) => {
-    if (reminder.type === "category") {
-      if (transaction.merchant.categoryDescription === reminder.name) {
-        u += parseFloat(transaction.amount.value)
-      }
-    } else {
-      if (transaction.merchant.name === reminder.name) {
-        u += parseFloat(transaction.amount.value)
-      }
-    }
-    return u
-  }, 0)
+  const usage = transactions
+    ? transactions.reduce((u, transaction) => {
+        if (reminder.type === "category") {
+          if (transaction.merchant.categoryDescription === reminder.name) {
+            u += parseFloat(transaction.amount.value)
+          }
+        } else {
+          if (transaction.merchant.name === reminder.name) {
+            u += parseFloat(transaction.amount.value)
+          }
+        }
+        return u
+      }, 0)
+    : 0
 
   return (
     <tr>

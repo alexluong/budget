@@ -40,7 +40,7 @@ module.exports = {
       resolve: "gatsby-plugin-web-font-loader",
       options: {
         google: {
-          families: ["Source Sans Pro"],
+          families: ["Source Sans Pro", "Bungee Shade"],
         },
       },
     },

@@ -1,12 +1,20 @@
 import React from "react"
+import styled from "styled-components"
 import { Button, TextField, Select } from "ui"
+
+const Container = styled.div`
+  max-width: 298px;
+  ${TextField} {
+    width: 100%;
+  }
+`
 
 function AddReminder({ onClick }) {
   const [adding, setAdding] = React.useState(false)
   const toggleAdding = () => setAdding(!adding)
 
   return (
-    <div style={{ maxWidth: 298 }}>
+    <Container>
       {adding && (
         <div style={{ marginBottom: "2rem" }}>
           <div>
@@ -51,7 +59,9 @@ function AddReminder({ onClick }) {
           </div>
         </div>
       )}
-      <Button onClick={toggleAdding}>{adding ? "Cancel" : "Add"}</Button>
+      <Button variant="default" onClick={toggleAdding}>
+        {adding ? "Cancel" : "Add"}
+      </Button>
       {adding && (
         <Button
           style={{ marginLeft: "1.5rem" }}
@@ -81,7 +91,7 @@ function AddReminder({ onClick }) {
           Add
         </Button>
       )}
-    </div>
+    </Container>
   )
 }
 

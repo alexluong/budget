@@ -1,6 +1,6 @@
 import styled from "styled-components"
 
-export default styled.button`
+const Button = styled.button`
   display: inline-block;
   padding: 1rem 2rem;
   font-family: "Source Sans Pro", sans-serif;
@@ -13,17 +13,25 @@ export default styled.button`
   display: inline-block;
   text-align: center;
 
-  color: #212529;
-  background-color: #f8f9fa;
+  background-color: ${props =>
+    props.variant === "default" ? "#857F72" : "#0A6C74"};
+  color: ${props => (props.variant === "default" ? "#FAF9F7" : "#FAF9F7")};
 
   transition: all 0.15s ease-in-out;
   cursor: pointer;
 
   &:hover {
-    background-color: #e2e6ea;
+    background-color: ${props =>
+      props.variant === "default" ? "#A39E93" : "#2CB1BC"};
   }
 
   &:active {
     transform: translateY(2px);
   }
 `
+
+Button.defaultProps = {
+  variant: "primary",
+}
+
+export default Button
