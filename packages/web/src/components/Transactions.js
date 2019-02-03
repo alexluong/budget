@@ -3,7 +3,10 @@ import PropTypes from "prop-types"
 import Money from "components/Money"
 import Table from "components/Table"
 
-function Transactions({ transactions }) {
+function Transactions({ transactions: remoteTransactions }) {
+  const localTransactions = JSON.parse(localStorage.getItem("transactions"))
+  const transactions = [...localTransactions, ...remoteTransactions]
+
   return (
     <Table>
       <thead>
@@ -15,8 +18,8 @@ function Transactions({ transactions }) {
         </tr>
       </thead>
       <tbody>
-        {transactions.map(transaction => (
-          <tr key={transaction.transactionId}>
+        {transactions.map((transaction, i) => (
+          <tr key={transaction.transactionId || i}>
             <td>
               <Money money={transaction.amount} />
             </td>

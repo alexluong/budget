@@ -4,9 +4,9 @@ import useAxios from "hooks/useAxios"
 import Layout from "components/Layout"
 import Nav from "components/Nav"
 import Table from "components/Table"
+import Reminder from "components/Reminder"
 import AddReminder from "components/AddReminder"
 import Title from "components/Title"
-import { Button } from "ui"
 
 function RemindersPage() {
   const { response, loading, error } = useAxios({
@@ -17,6 +17,7 @@ function RemindersPage() {
   const [, setStuff] = React.useState(false)
 
   let reminders
+  const transactions = JSON.parse(localStorage.getItem("transactions"))
 
   function render() {
     if (loading) {
@@ -39,17 +40,16 @@ function RemindersPage() {
               <th>Type</th>
               <th>Name</th>
               <th>Amount</th>
+              <th>Usage</th>
             </tr>
           </thead>
           <tbody>
             {reminders.map((reminder, i) => (
-              <tr key={i}>
-                <td>{reminder.type}</td>
-                <td>{reminder.name}</td>
-                <td>
-                  ${reminder.amount}/{reminder.time}
-                </td>
-              </tr>
+              <Reminder
+                key={i}
+                reminder={reminder}
+                transactions={transactions}
+              />
             ))}
           </tbody>
         </Table>

@@ -44,8 +44,6 @@ function DetailsPage() {
       return <p>Error</p>
     }
 
-    console.log(response.data)
-
     const customer = response.data
 
     return (

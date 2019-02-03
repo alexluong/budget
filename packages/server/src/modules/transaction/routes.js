@@ -68,4 +68,10 @@ router.get("/reminders", (req, res) => {
   res.status(200).send({ reminders })
 })
 
+// POST /trigger
+router.post("/trigger", (req, res) => {
+  console.log(req.body)
+  res.sendStatus(200)
+})
+
 export default router
