@@ -36,11 +36,13 @@ function MockPage() {
     }, [])
     console.log(overs)
     if (overs.length > 0) {
-      axios.post(`${process.env.GATSBY_API_URL}/trigger`, { reminders: overs })
+      axios.post(`${process.env.GATSBY_API_URL}/trigger`, {
+        reminders: overs,
+        phone: localStorage.getItem("phone"),
+        name: localStorage.getItem("name"),
+      })
     }
   }
-
-  calculate("NIKE", "CLOTHING")
 
   return (
     <Layout>

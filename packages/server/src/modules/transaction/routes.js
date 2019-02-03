@@ -1,5 +1,6 @@
 import express from "express"
 import axios from "axios"
+import twilio from "twilio"
 import throwError from "../../error"
 import reminders from "./reminders"
 
@@ -8,12 +9,18 @@ const router = express.Router()
 const TSYS_URL = process.env.TSYS_URL
 const TSYS_API_KEY = process.env.TSYS_API_KEY
 
+const TWILIO_ACCOUNT_SID = process.env.TWILIO_ACCOUNT_SID
+const TWILIO_AUTH_TOKEN = process.env.TWILIO_AUTH_TOKEN
+const TWILIO_PHONE_NUMBER = process.env.TWILIO_PHONE_NUMBER
+
 const axiosIns = axios.create({
   baseURL: TSYS_URL,
   headers: {
     Authorization: `Bearer ${TSYS_API_KEY}`,
   },
 })
+
+const twilioClient = twilio(TWILIO_ACCOUNT_SID, TWILIO_AUTH_TOKEN)
 
 // GET /transactions
 router.get("/transactions/:cardNumber", (req, res) => {
@@ -70,7 +77,23 @@ router.get("/reminders", (req, res) => {
 
 // POST /trigger
 router.post("/trigger", (req, res) => {
-  console.log(req.body)
+  let { reminders, phone, name } = req.body
+
+  reminders.forEach(reminder => {
+    twilioClient.messages
+      .create({
+        body: `Hey ${name}! Just a friendly reminder that your budget for ${
+          reminder.name
+        } this ${reminder.time} is $${reminder.amount}, and you have spent $${
+          reminder.usage
+        }. Have a great day!`,
+        to: phone,
+        from: TWILIO_PHONE_NUMBER,
+      })
+      .then(message => console.log(message.sid))
+      .done()
+  })
+
   res.sendStatus(200)
 })
 
