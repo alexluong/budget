@@ -1,0 +1,16 @@
+{
+  "name": "budget",
+  "version": "1.0.0",
+  "license": "MIT",
+  "author": "Alex Luong",
+  "private": true,
+  "workspaces": [
+    "packages/*"
+  ],
+  "scripts": {
+    "build": "yarn workspace web build",
+    "web": "yarn workspace web start",
+    "server": "yarn workspace server dev",
+    "ui": "yarn workspace ui storybook"
+  }
+}
