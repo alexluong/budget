@@ -1,20 +1,7 @@
 import React from "react"
 import PropTypes from "prop-types"
-import styled from "styled-components"
 import Money from "components/Money"
-
-const Table = styled.table`
-  th,
-  td {
-    padding: 0.5rem 1rem;
-    padding-right: 8rem;
-  }
-
-  th {
-    text-transform: uppercase;
-    letter-spacing: 1px;
-  }
-`
+import Table from "components/Table"
 
 function Transactions({ transactions }) {
   return (

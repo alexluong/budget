@@ -36,7 +36,14 @@ function IndexPage() {
           </p>
         </div>
 
-        <hr style={{ margin: "2rem 0" }} />
+        <hr
+          style={{
+            margin: "2rem 0",
+            borderColor: "#ddd",
+            backgroundColor: "#ddd",
+            color: "#ddd",
+          }}
+        />
 
         <Transactions transactions={transaction.transactions} />
       </div>

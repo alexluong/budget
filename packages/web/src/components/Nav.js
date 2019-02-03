@@ -4,7 +4,7 @@ import styled from "styled-components"
 
 const StyledNav = styled.div`
   display: flex;
-  margin-bottom: 5rem;
+  margin-bottom: 2rem;
 
   * {
     margin-right: 5rem;

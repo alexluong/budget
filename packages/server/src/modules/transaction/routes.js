@@ -1,6 +1,7 @@
 import express from "express"
 import axios from "axios"
 import throwError from "../../error"
+import reminders from "./reminders"
 
 const router = express.Router()
 
@@ -38,6 +39,7 @@ router.get("/transactions/:cardNumber", (req, res) => {
     })
 })
 
+// GET /details/:cardNumber
 router.get("/details/:cardNumber", (req, res) => {
   const { cardNumber } = req.params
 
@@ -59,6 +61,11 @@ router.get("/details/:cardNumber", (req, res) => {
       console.log(error)
       res.status(401).send({ message: "Error" })
     })
+})
+
+// GET /reminders
+router.get("/reminders", (req, res) => {
+  res.status(200).send({ reminders })
 })
 
 export default router
