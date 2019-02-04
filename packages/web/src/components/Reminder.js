@@ -24,7 +24,7 @@ function Reminder({ reminder, transactions }) {
       <td>
         ${reminder.amount}/{reminder.time}
       </td>
-      <td>${usage}</td>
+      <td>${usage.toFixed(2)}</td>
     </tr>
   )
 }

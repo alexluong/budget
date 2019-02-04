@@ -4,7 +4,7 @@ require("dotenv").config({
 
 module.exports = {
   siteMetadata: {
-    title: "Budget",
+    title: "Remind",
     description: "",
     canonicalUrl: "https://www.crimsonhacks.com",
     image: "https://www.crimsonhacks.com/logo.png",
